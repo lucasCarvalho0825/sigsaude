@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"></head>
+<body>
+	<nav class="sidebar sidebar-open" th:fragment="nav-sidebar">
+		<ul class="nav nav-pills">
+			<li class="nav-item"><a class="nav-link active">
+				<i class="oi oi-home"></i> <span>MENU</span>
+			</a></li>
+		</ul>
+		<ul class="nav nav-pills">
+			<li class="nav-item"><a class="nav-link"
+										href="/turma/listar"> <i class="oi oi-plus"></i> <span>TURMA</span>
+			</a></li>
+			<li class="nav-item"><a class="nav-link"
+									href="/aluno/listar"> <i class="oi oi-plus"></i> <span>ALUNO</span>
+			</a></li>
+			<li class="nav-item"><a class="nav-link"
+									href="/professor/listar"> <i class="oi oi-plus"></i> <span>PROFESSOR</span>
+			</a></li>
+		</ul>
+	</nav>
+</body>
+</html>
