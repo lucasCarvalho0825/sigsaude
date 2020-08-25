@@ -1,27 +1,30 @@
 package unfn.imd.sigsaude.model.entity;
 
 import lombok.*;
-import org.hibernate.validator.constraints.br.CPF;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Professor extends AbstractEntity<Long>{
+public class Professor{
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
 
     @NotBlank
     @Column(nullable = false, length = 20)
-    private String nome;
+    String nome;
 
     @NotBlank
     @Column(nullable = false, unique = true)
-    private String disciplina;
+    String disciplina;
 
     @NotBlank
     @Column(nullable = false, length = 11)
-    private String cpf;
+    String cpf;
 }

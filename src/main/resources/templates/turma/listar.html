@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{home}">
+<head><meta charset="UTF-8"/></head>
+<body>
+<section class="layout-content" layout:fragment="corpo">
+    <nav class="navbar navbar-expand-md bg-light">
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <i class="oi oi-caret-right"></i>
+                    <span>LISTA DE TURMAS</span>
+                </li>
+            </ul>
+            <a class="btn btn-primary btn-md" href="/turma/cadastrar" role="button">
+                <span class="oi oi-plus" title="Cadastro" aria-hidden="true"></span>
+                <span>ADD TURMA</span>
+            </a>
+        </div>
+    </nav>
+    <div class="container">
+
+        <div class="table-responsive">
+            <table class="table table-striped table-hover table-sm">
+                <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Professor</th>
+                    <th>Alunos</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="list:${turmas}">
+                        <td th:text="${list.sala}"> Sala</td>
+                        <td th:text="${list.professor.nome}"> Professor</td>
+                        <td>
+                            <a th:href="@{'/turma/alunos/' + ${list.id}}"  class="btn btn-info btn-sm"  role="button">
+                                <span class="oi oi-eye" title="Visualizar" aria-hidden="true"></span>
+                            </a>
+                        </td>
+                        <td></td>
+                        <td colspan="2">
+                            <a th:href="@{'/turma/editar/' + ${list.id}}"  class="btn btn-info btn-sm"  role="button">
+                                <span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
+                            </a>
+                            <a th:href="@{'/turma/excluir/' + ${list.id}}"  class="btn btn-danger btn-sm" role="button">
+                                <span class="oi oi-circle-x" title="Excluir" aria-hidden="true"></span>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+</body>
+</html>

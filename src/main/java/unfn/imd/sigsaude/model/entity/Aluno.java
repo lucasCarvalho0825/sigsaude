@@ -3,25 +3,31 @@ package unfn.imd.sigsaude.model.entity;
 import lombok.*;
 import org.hibernate.validator.constraints.br.CPF;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Aluno extends AbstractEntity<Long> {
+public class Aluno {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
 
     @NotBlank
     @Column(nullable = false, length = 20)
-    private String nome;
+    String nome;
 
     @NotBlank
     @Column(nullable = false, length = 20, unique = true)
-    private String matricula;
+     String matricula;
 
     @NotBlank
     @Column(nullable = false, length = 11,  unique = true)
-    private String cpf;
+    String cpf;
+
+    @ManyToOne
+    Turma turma;
 }

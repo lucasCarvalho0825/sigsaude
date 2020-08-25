@@ -10,20 +10,22 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Turma extends AbstractEntity<Long>{
+public class Turma {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
 
     @NotBlank
     @Column(nullable = false, length = 20)
-    private String sala;
+    String sala;
 
-    @OneToOne(cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER,
-            orphanRemoval = true)
+    @OneToOne
     @JoinColumn(name = "professor_id")
     Professor professor;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,
-            orphanRemoval = true)
-    @JoinColumn(name = "aluno_id")
-    private List<Aluno> aluno;
+    @OneToMany
+    @JoinColumn(name = "turma_id")
+    List<Aluno> aluno;
+
 }

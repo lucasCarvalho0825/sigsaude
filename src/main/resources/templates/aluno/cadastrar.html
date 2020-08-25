@@ -60,10 +60,23 @@
                     </div>
                 </div>
 
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="turma">Turma</label>
+                        <select id="turma" class="form-control" th:field="*{turma}">
+                            <option value="">Selecione...</option>
+                            <option th:each="t : ${turmas}" th:value="${t.id}" th:text="${t.sala}"></option>
+                        </select>
+                        <div class="invalid-feedback">
+
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <a class="btn btn-primary btn-md" href="/aluno/salvar" role="button">
                 <input type="hidden" id="id" name="id" value=""/>
-                <button type="submit" class="btn btn-primary btn-sm">SALVAR</button>
+                <button type="submit" class="btn btn-primary btn-sm">SALVARr</button>
             </a>
         </form>
     </div>

@@ -8,9 +8,10 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import unfn.imd.sigsaude.model.entity.Aluno;
+import unfn.imd.sigsaude.model.entity.Turma;
 import unfn.imd.sigsaude.service.AlunoService;
+import unfn.imd.sigsaude.service.TurmaService;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -18,10 +19,12 @@ import java.util.List;
 public class AlunoController {
 
     private AlunoService service;
+    private TurmaService tService;
 
     @Autowired
-    public AlunoController(AlunoService service) {
+    public AlunoController(AlunoService service, TurmaService tService) {
         this.service = service;
+        this.tService = tService;
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/listar")
@@ -64,4 +67,8 @@ public class AlunoController {
         return "redirect:/aluno/listar";
     }
 
+    @ModelAttribute("turmas")
+    public List<Turma> getTurmas(){
+        return tService.buscarTodos();
+    }
 }

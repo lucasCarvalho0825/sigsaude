@@ -23,23 +23,22 @@ public class ProfessorController {
         this.service = service;
     }
 
-    //Rotas para criar, editar, visualizar e remover.
-    @RequestMapping("/listar")
-    public String getHome( Model m){
+    @RequestMapping(method = RequestMethod.GET, value = "/listar")
+    public String listar( Model m){
         List<Professor> professorList = service.buscarTodos();
-        m.addAttribute("professores", professorList); // revisar conceito atributte
+        m.addAttribute("professores", professorList);
         return "professor/listar";
     }
 
-    @RequestMapping("/cadastrar")
-    public String getCadastro(Model m){
+    @RequestMapping(method = RequestMethod.GET, value = "/cadastrar")
+    public String Cadastrar(Model m){
         var professor = new Professor();
         m.addAttribute("professor", professor);
         return "professor/cadastrar";
     }
 
-    @PostMapping(value = "/salvar")
-    public String getSalvar(@ModelAttribute Professor p , Errors e){
+    @RequestMapping(method = RequestMethod.POST, value = "/salvar")
+    public String Salvar(@ModelAttribute Professor p , Errors e){
 
         if(e.hasErrors()){
             return "/professor/cadastrar";
@@ -49,17 +48,16 @@ public class ProfessorController {
         }
     }
 
-    @GetMapping("/editar/{id}")
-    public ModelAndView getEditar(@PathVariable(name = "id")   Long id){
+    @RequestMapping(method = RequestMethod.GET, value = "/editar/{id}")
+    public ModelAndView Editar(@PathVariable(name = "id")   Long id){
         var modelAndView = new ModelAndView("professor/editar");
         var professor = service.buscarPorId(id);
         modelAndView.addObject("professor", professor);
         return  modelAndView;
     }
 
-
-    @GetMapping("/excluir/{id}")
-    public String getExcluir(@PathVariable(name = "id") Long id) {
+    @RequestMapping(method = RequestMethod.GET, value = "/excluir/{id}")
+    public String Excluir(@PathVariable(name = "id") Long id){
         var professor = service.buscarPorId(id);
         service.deletar(professor);
         return "redirect:/professor/listar";
