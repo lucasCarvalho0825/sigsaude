@@ -29,5 +29,6 @@ public class Aluno {
     String cpf;
 
     @ManyToOne
+    @JoinColumn(name = "turma_id")
     Turma turma;
 }

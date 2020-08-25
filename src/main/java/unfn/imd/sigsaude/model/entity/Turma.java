@@ -25,7 +25,6 @@ public class Turma {
     Professor professor;
 
     @OneToMany
-    @JoinColumn(name = "turma_id")
     List<Aluno> aluno;
 
 }

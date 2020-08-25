@@ -8,6 +8,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import unfn.imd.sigsaude.model.entity.Aluno;
+import unfn.imd.sigsaude.model.entity.Professor;
 import unfn.imd.sigsaude.model.entity.Turma;
 import unfn.imd.sigsaude.service.AlunoService;
 import unfn.imd.sigsaude.service.TurmaService;
